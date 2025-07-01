@@ -1,6 +1,7 @@
 ﻿using API.Data;
 using API.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -14,17 +15,17 @@ public class UsersController(DataContext context) : ControllerBase
 
     // GET: api/users
     [HttpGet]
-    public ActionResult<IEnumerable<AppUser>> GetUsers()
+    public async Task<ActionResult<IEnumerable<AppUser>>> GetUsers()
     {
-        var users = context.Users.ToList();
+        var users = await context.Users.ToListAsync();
         return Ok(users);
     }
 
     // GET api/users/5
-    [HttpGet("{id: int}")]
-    public ActionResult<IEnumerable<AppUser>> GetUser(int id)
+    [HttpGet("{id}")]
+    public async Task<ActionResult<IEnumerable<AppUser>>> GetUser(int id)
     {
-        var user = context.Users.Find(id);   //built-in method.
+        var user = await context.Users.FindAsync(id);   //built-in method.
         if (user == null) return NotFound($"User With ID {id} not found");
         return Ok(user);
     }

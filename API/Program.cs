@@ -16,12 +16,19 @@ namespace API
             builder.Services.AddDbContext<DataContext>(opts =>
             {                                                 //Adding CS to the DBContext, Same as API. So, eveything now is pointing to the same thing.
                 opts.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
-            }); 
+            });
 
+            //Adding CORS Service
+            builder.Services.AddCors();
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
             // This is the middleware section
+
+            //CORS Middleware
+            app.UseCors(x => x.AllowAnyHeader().AllowAnyOrigin().WithOrigins("http://localhost:52504", "https://localhost:52504"));
+
+            //End of middleware section
             app.MapControllers();
 
             app.Run();

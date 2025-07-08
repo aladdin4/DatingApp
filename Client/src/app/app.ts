@@ -20,4 +20,8 @@ export class App implements OnInit {
       complete: () => console.log('Request Completed')
     })
   }
+  toggleDarkMode() {
+    const element = document.querySelector('html');
+    element?.classList.toggle('my-app-dark');
+  }
 }

@@ -1,1 +1,20 @@
-<h1> Guss whos back? {{title}} A course by Neil Cummins</h1>
+<h1>{{title}}</h1>
+<ul>
+    <!-- to use the index: @for (user of users; track $index) -->
+    <!-- to use a custom identifier  -->@for (user of users; track user.id)
+    {
+    <li>{{user.userName}}</li>
+    }
+    <li *ngFor="let user of users">{{user.userName}} - Aged {{user.id}}</li>
+</ul>
+<p-button label="Hii " />
+<p-button label="Toggle Dark Mode" (onClick)="toggleDarkMode()" />
+
+<div class="card flex justify-center">
+    <button pButton>
+        <i class="pi pi-check" pButtonIcon></i>
+        <span pButtonLabel>Save</span>
+    </button>
+</div>
+<p-button icon="pi pi-home" aria-label="Save" />
+

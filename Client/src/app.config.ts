@@ -13,9 +13,9 @@ export const appConfig: ApplicationConfig = {
     providePrimeNG({
       theme: {
        // preset: Aura,
-        // preset: Material,
+       // preset: Material,
         preset: Lara   ,
-        //preset: Nora,
+        // preset: Nora,
         options: {
           darkModeSelector: '.my-app-dark'
         }

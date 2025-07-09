@@ -10,11 +10,13 @@ import { ToastModule } from 'primeng/toast';
 import { CardModule } from 'primeng/card';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 
+import { PanelModule } from 'primeng/panel';
 
 @NgModule({
   imports: [
-    //CommonModule,
+    CommonModule,
     ButtonModule,
+    PanelModule
     //InputTextModule,
     //TableModule,
     //DropdownModule,
@@ -22,10 +24,12 @@ import { ProgressSpinnerModule } from 'primeng/progressspinner';
     //CalendarModule,
     //ToastModule,
     //CardModule,
-    //ProgressSpinnerModule
+    //ProgressSpinnerModule  ,
+   
   ],
   exports: [
     ButtonModule,
+    PanelModule
     //InputTextModule,
     //TableModule,
     //DropdownModule,
@@ -33,7 +37,8 @@ import { ProgressSpinnerModule } from 'primeng/progressspinner';
     //CalendarModule,
     //ToastModule,
     //CardModule,
-    //ProgressSpinnerModule
+    //ProgressSpinnerModule ,
+   
   ]
 })
 export class PrimeNgImportsModule { }

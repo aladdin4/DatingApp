@@ -9,16 +9,24 @@ import { DialogModule } from 'primeng/dialog';
 import { ToastModule } from 'primeng/toast';
 import { CardModule } from 'primeng/card';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
+import { ToggleSwitchModule } from 'primeng/toggleswitch';
+                import { TagModule } from 'primeng/tag';
 
 import { PanelModule } from 'primeng/panel';
+import { Component, OnInit } from '@angular/core';
+import { FormsModule } from '@angular/forms'; import { SelectModule } from 'primeng/select';
 
 @NgModule({
   imports: [
     CommonModule,
     ButtonModule,
-    PanelModule
+    PanelModule ,
     //InputTextModule,
-    //TableModule,
+    TableModule,
+    ToggleSwitchModule,
+    FormsModule,
+    TagModule,
+    SelectModule
     //DropdownModule,
     //DialogModule,
     //CalendarModule,
@@ -29,9 +37,13 @@ import { PanelModule } from 'primeng/panel';
   ],
   exports: [
     ButtonModule,
-    PanelModule
+    PanelModule  ,
     //InputTextModule,
-    //TableModule,
+    TableModule,
+    ToggleSwitchModule,
+    FormsModule,
+    TagModule,
+    SelectModule
     //DropdownModule,
     //DialogModule,
     //CalendarModule,

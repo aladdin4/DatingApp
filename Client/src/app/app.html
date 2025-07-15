@@ -1,27 +1,4 @@
-<h1>{{title}}</h1>
-<ul>
-    <!-- to use the index: @for (user of users; track $index) -->
-    <!-- to use a custom identifier  -->@for (user of users; track user.id)
-    {
-    <li>{{user.userName}}</li>
-    }
-    <li *ngFor="let user of users">{{user.userName}} - Aged {{user.id}}</li>
-</ul>
-<p-button label="Hii " />
-<p-button label="Toggle Dark Mode" (onClick)="toggleDarkMode()" />
 
-<div class="card flex justify-center">
-    <button pButton>
-        <i class="pi pi-check" pButtonIcon></i>
-        <span pButtonLabel>Save</span>
-    </button>
-</div>
-<p-button icon="pi pi-home" aria-label="Save" />
-<p-panel header="Header">
-    <p class="m-0">
-        Lorem ipsum dolor sit amet...
-    </p>
-</p-panel>
-<h1 class="text-3xl font-bold underline">
+<h1 class="text-3xl font-bold underline text-lime-700">
     Hello world!
 </h1>

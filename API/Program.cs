@@ -26,7 +26,7 @@ namespace API
             // This is the middleware section
 
             //CORS Middleware
-            app.UseCors(x => x.AllowAnyHeader().AllowAnyOrigin().WithOrigins("http://localhost:52504", "https://localhost:52504"));
+            app.UseCors(x => x.AllowAnyHeader().AllowAnyOrigin().WithOrigins("http://localhost:4200"));
 
             //End of middleware section
             app.MapControllers();

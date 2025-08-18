@@ -1,4 +1,6 @@
+using API.Data;
 using API.Extensions;
+using Microsoft.EntityFrameworkCore;
 
 namespace API
 {
@@ -11,9 +13,18 @@ namespace API
             // Add "Extension Services" to the container.
             builder.Services.AddAppService(builder.Configuration);
             builder.Services.AddIdentityServices(builder.Configuration);
-
+           
             var app = builder.Build();
 
+            // Applies any pending migrations by default when app starts
+            if (app.Environment.IsDevelopment())
+            {
+                using (var scope = app.Services.CreateScope())
+                {
+                    var dbContext = scope.ServiceProvider.GetRequiredService<DataContext>();
+                    dbContext.Database.Migrate();
+                }
+            }
             //Configure the HTTP request pipeline.
             //This is the middleware section
             //Ordering is important

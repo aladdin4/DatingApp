@@ -1,12 +1,20 @@
-﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.IdentityModel.Tokens;
-using System.Text;
-
-namespace API.Extensions
+﻿namespace API.Extensions
 {
+    using Microsoft.AspNetCore.Authentication.JwtBearer;
+    using Microsoft.IdentityModel.Tokens;
+    using System.Text;
+
+    /// <summary>
+    /// Defines the <see cref="IdentityServiceExtensions" />
+    /// </summary>
     public static class IdentityServiceExtensions
     {
-
+        /// <summary>
+        /// The AddIdentityServices
+        /// </summary>
+        /// <param name="services">The services<see cref="IServiceCollection"/></param>
+        /// <param name="config">The config<see cref="IConfiguration"/></param>
+        /// <returns>The <see cref="IServiceCollection"/></returns>
         public static IServiceCollection AddIdentityServices(this IServiceCollection services, IConfiguration config)
         {
             //Adding Authentication

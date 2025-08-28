@@ -41,7 +41,7 @@ namespace API.Controllers
                 Token = tokenService.CreateToken(user)
 
             };
-            return Ok(user);
+            return Ok(userDto);
         }
         private async Task<bool> UserExists(string userName)
         {

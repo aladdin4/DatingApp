@@ -1,7 +1,6 @@
 <!-- Navigation header for Friendzy app -->
 <header class="relative bg-gray-100">
-    <nav aria-label="Top" class="mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="border-b border-gray-200">
+        <div class="border-b border-gray-200 mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex h-16 items-center">
                 <!-- Logo section -->
                 <div class="ml-4 mr-8 flex lg:ml-0">
@@ -11,7 +10,7 @@
                     </a>
                 </div>
                 <!-- Show navigation links if user is logged in -->
-                @if (loggedIn){
+                @if (accountService.currentUser()){
                 <div class="mr-auto flex items-center mt-2">
                     <div class="flex flex-1 items-center justify-end space-x-6">
                         <!-- Lists link -->
@@ -23,7 +22,7 @@
                 </div>
                 <!-- Show logout button -->
                 <div class="card flex justify-center" style="width: 45%;display: flex; justify-content: flex-end;">
-                    <p-select [options]="loginOptions" [(ngModel)]="currentLoginOption" placeholder="{{welcomeMessage}}" (onChange)="loginChanged()" optionLabel="label" class="w-fit  border-none bg-transparent" [style]="{'border': 'none', 'background': 'transparent', 'box-shadow': 'none'}" />
+                    <p-select [options]="loginOptions" [(ngModel)]="currentLoginOption" placeholder="Welcome {{accountService.currentUser()?.username}}" (onChange)="loginChanged()" optionLabel="label" class="w-fit  border-none bg-transparent" [style]="{'border': 'none', 'background': 'transparent', 'box-shadow': 'none'}" />
                 </div>
                 }
                 <!-- Show login form if user is not logged in -->
@@ -48,5 +47,4 @@
                 }
             </div>
         </div>
-    </nav>
 </header>

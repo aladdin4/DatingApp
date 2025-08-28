@@ -7,11 +7,13 @@ import { App } from './app';
 import { provideHttpClient } from '@angular/common/http';
 import { appConfig } from '../app.config';
 import { PrimeNgImportsModule } from './prime-ng-imports.module';
-import { Nav } from './nav/nav';
-@NgModule({
+import { NavbarComponent } from './nav/navbar.component';
+import { HomeComponent } from './home/home.component';
+@NgModule({                                     
   declarations: [
     App,
-    Nav
+    NavbarComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,

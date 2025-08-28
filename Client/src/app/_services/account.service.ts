@@ -1,29 +1,54 @@
 import { HttpClient } from '@angular/common/http';
-import { inject, Injectable } from '@angular/core';
+import { inject, Injectable, signal } from '@angular/core';
+import { User } from '../_models/user';
+import { map } from 'rxjs';
+import { UserDTO } from '../_models/userDTO';
 
-/**
- * Service responsible for handling user authentication operations
- * including login, registration, and user state management
- */
+
 @Injectable({
   providedIn: 'root'
 })
 export class AccountService {
-  /** HTTP client for making API requests */
   private http = inject(HttpClient);
-  
-  /** Base URL for API endpoints */
+
   private baseUrl = 'https://localhost:5001/api/';
 
-  /**
-   * Authenticates a user with the provided credentials
-   * @param model - Login model containing username/email and password
-   * @returns Observable of the HTTP response containing user data or error
-   */
-  login(model: any) {
-    return this.http.post(this.baseUrl + 'account/login', model);
+  currentUser = signal<User | null>(null);
+
+  login(model: UserDTO) {
+    return this.http.post(this.baseUrl + 'account/login', model).pipe(
+      map((user: any) => {
+        if (!user) return;
+        user.username = user.username.split(' ').map((word: string) => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')
+        localStorage.setItem('user', JSON.stringify(user));
+        this.currentUser.set(user);
+      })
+    );
+  }
+
+  logout() {
+    localStorage.removeItem('user');
+    this.currentUser.set(null);
+  }
+
+  getUser() {
+    if (!this.currentUser()) {
+      const user = localStorage.getItem('user');
+      this.currentUser.set(user ? JSON.parse(user) : null);
+    }
   }
 
 
+  register(model: UserDTO) {
+    return this.http.post(this.baseUrl + 'account/register', model).pipe(
+      map((user: any) => {
+        if (!user) return;
+        user.username = user.username.split(' ').map((word: string) => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')
+        localStorage.setItem('user', JSON.stringify(user));
+        this.currentUser.set(user);
+        return user;
+      })
+    );
+  }
 }
 

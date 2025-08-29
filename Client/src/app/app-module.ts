@@ -9,11 +9,21 @@ import { appConfig } from '../app.config';
 import { PrimeNgImportsModule } from './prime-ng-imports.module';
 import { NavbarComponent } from './nav/navbar.component';
 import { HomeComponent } from './home/home.component';
+import { MemberDetailComponent } from './members/member-detail/member-detail.component';
+import { MemberListComponent } from './members/member-list/member-list.component';
+import { MessagesComponent } from './messages/messages.component';
+import { ListsComponent } from './lists/lists.component';
+import { MessageService } from 'primeng/api';
+
 @NgModule({                                     
   declarations: [
     App,
     NavbarComponent,
     HomeComponent,
+    MemberListComponent,
+    MemberDetailComponent,
+    MessagesComponent,
+    ListsComponent
   ],
   imports: [
     BrowserModule,
@@ -25,6 +35,7 @@ import { HomeComponent } from './home/home.component';
   providers: [
    provideBrowserGlobalErrorListeners(),
     provideHttpClient(),
+    MessageService,
     ...(appConfig.providers || [])
   ],
   bootstrap: [App]

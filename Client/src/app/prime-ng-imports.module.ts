@@ -12,6 +12,7 @@ import { SelectModule } from 'primeng/select';
 import { TableModule } from 'primeng/table';
 import { TagModule } from 'primeng/tag';
 import { ToggleSwitchModule } from 'primeng/toggleswitch';
+import { ToastModule } from 'primeng/toast';
 
 /**
  * Shared module that imports and exports all PrimeNG components used in the application.
@@ -30,7 +31,8 @@ import { ToggleSwitchModule } from 'primeng/toggleswitch';
     SelectModule,
     TableModule,
     TagModule,
-    ToggleSwitchModule
+    ToggleSwitchModule,
+    ToastModule,
   ],
   exports: [
     FormsModule,
@@ -43,7 +45,8 @@ import { ToggleSwitchModule } from 'primeng/toggleswitch';
     SelectModule,
     TableModule,
     TagModule,
-    ToggleSwitchModule
+    ToggleSwitchModule,
+    ToastModule,
   ]
 })
 export class PrimeNgImportsModule { }

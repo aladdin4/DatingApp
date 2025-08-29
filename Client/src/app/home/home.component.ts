@@ -1,11 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { AccountService } from '../_services/account.service';
+import { MessageService } from 'primeng/api';
 
-
-interface LoginOption {
-  label: string;
-  value: Number;
-}
 //Navigation component handling user authentication
 @Component({
   selector: 'home',
@@ -15,6 +11,8 @@ interface LoginOption {
 })
 export class HomeComponent {
   private accountService = inject(AccountService);
+  messageService = inject(MessageService);
+
   model: any = {};
   registering: boolean = false;
   register() {
@@ -22,10 +20,13 @@ export class HomeComponent {
       next: (result) => {
         console.log(result);
         this.registering = false;
+        this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Login Successful, Welcome ' + result.username, key: 'br' });
+
       },
       error: (error) => {
         console.log(error);
         this.registering = false;
+        this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Login Failed, error:' + JSON.stringify(error), key: 'br' });
       }
     });
   }

@@ -22,6 +22,7 @@ export class AccountService {
         user.username = user.username.split(' ').map((word: string) => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')
         localStorage.setItem('user', JSON.stringify(user));
         this.currentUser.set(user);
+        return user;
       })
     );
   }
@@ -35,7 +36,11 @@ export class AccountService {
     if (!this.currentUser()) {
       const user = localStorage.getItem('user');
       this.currentUser.set(user ? JSON.parse(user) : null);
+      return (!!this.currentUser());
     }
+    console.log('2', this.currentUser())
+    console.log('21', !this.currentUser())
+    return (!!this.currentUser())
   }
 
 

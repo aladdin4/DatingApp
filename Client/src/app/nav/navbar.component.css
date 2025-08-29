@@ -14,3 +14,6 @@
 .p-button:hover {
   background-color: #2563eb !important; /* blue-600 */
 }
+                              .active{
+                                  color:red
+                              }

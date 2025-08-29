@@ -2,6 +2,7 @@ import { Component, inject, OnInit } from '@angular/core';
 import { AccountService } from '../_services/account.service';
 import { User } from '../_models/user';
 import { UserDTO } from '../_models/userDTO';
+import { MessageService } from 'primeng/api';
 
 interface LoginOption {
   label: string;
@@ -16,6 +17,7 @@ interface LoginOption {
 })
 export class NavbarComponent implements OnInit {
    accountService = inject(AccountService);
+  messageService = inject(MessageService);
 
   //init
   loginOptions: LoginOption[] | undefined;
@@ -26,16 +28,17 @@ export class NavbarComponent implements OnInit {
     ];
     this.setCurrentUser();
   }
-
   //login
   model: UserDTO = new UserDTO();
   login() {
     this.accountService.login(this.model).subscribe({
       next: (result: any) => {
+        this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Login Successful, Welcome ' + result.username,  key: 'br' });
         this.setCurrentUser();
       },
       error: (error: any) => {
         console.log(error);
+        this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Login Failed, error:'+ JSON.stringify(error),  key: 'br' });
       }
     });
   }

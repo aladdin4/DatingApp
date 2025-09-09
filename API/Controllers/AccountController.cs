@@ -25,23 +25,24 @@ namespace API.Controllers
             }
 
             //using to make it dispose as soon as it's done
-            using var hmac = new HMACSHA512();
-            var user = new AppUser
-            {
-                UserName = registerDTO.Username.ToLower(),
-                PasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(registerDTO.Password)),
-                PasswordSalt = hmac.Key
-            };
+            //using var hmac = new HMACSHA512();
+            //var user = new AppUser
+            //{
+            //    UserName = registerDTO.Username.ToLower(),
+            //    PasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(registerDTO.Password)),
+            //    PasswordSalt = hmac.Key
+            //};
 
-            _ctx.Users.Add(user);
-            await _ctx.SaveChangesAsync();
-            var userDto = new UserDTO
-            {
-                Username = user.UserName,
-                Token = tokenService.CreateToken(user)
+            //_ctx.Users.Add(user);
+            //await _ctx.SaveChangesAsync();
+            //var userDto = new UserDTO
+            //{
+            //    Username = user.UserName,
+            //    Token = tokenService.CreateToken(user)
 
-            };
-            return Ok(userDto);
+            //};
+            //return Ok(userDto);
+            return Ok();
         }
         private async Task<bool> UserExists(string userName)
         {

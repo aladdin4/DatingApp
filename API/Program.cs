@@ -1,12 +1,15 @@
 using API.Data;
+using API.Data.API.Data;
 using API.Extensions;
+using API.Middleware;
 using Microsoft.EntityFrameworkCore;
+using System.Threading.Tasks;
 
 namespace API
 {
     public class Program
     {
-        public static void Main(string[] args)
+        public static async Task Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
 
@@ -16,18 +19,13 @@ namespace API
            
             var app = builder.Build();
 
-            // Applies any pending migrations by default when app starts
-            if (app.Environment.IsDevelopment())
-            {
-                using (var scope = app.Services.CreateScope())
-                {
-                    var dbContext = scope.ServiceProvider.GetRequiredService<DataContext>();
-                    dbContext.Database.Migrate();
-                }
-            }
+         
+
             //Configure the HTTP request pipeline.
             //This is the middleware section
             //Ordering is important
+
+            app.UseMiddleware<ExceptionMiddleware>();
             //CORS Middleware
             app.UseCors(x => x.AllowAnyHeader().AllowAnyOrigin().WithOrigins("http://localhost:4200"));
 
@@ -35,7 +33,19 @@ namespace API
             app.UseAuthentication();
             app.UseAuthorization();
             //End of middleware section
-            app.MapControllers();
+            app.MapControllers();      
+
+            // Applies any pending migrations by default when app starts
+            if (app.Environment.IsDevelopment())
+            {
+                using (var scope = app.Services.CreateScope())
+                {
+                    var dbContext = scope.ServiceProvider.GetRequiredService<DataContext>();
+                    var services = scope.ServiceProvider;
+                    dbContext.Database.Migrate();
+                    await Seed.SeedUsers(dbContext);
+                }
+            }
 
             app.Run();
         }

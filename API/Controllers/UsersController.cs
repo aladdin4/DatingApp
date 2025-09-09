@@ -1,4 +1,5 @@
 ﻿using API.Data;
+using API.Interfaces;
 using API.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -8,22 +9,22 @@ using Microsoft.EntityFrameworkCore;
 
 namespace API.Controllers;
 
-                                    //1ry ctor
-public class UsersController(DataContext context) : BaseApiController
-{
-    [AllowAnonymous]
-    [HttpGet]       // GET: api/users
+[Authorize]                             
+public class UsersController(IUserRepo userRepo) : BaseApiController
+{   
+    // GET: api/users
+    [HttpGet]       
     public async Task<ActionResult<IEnumerable<AppUser>>> GetUsers()
     {
-        var users = await context.Users.ToListAsync();
+        var users = await userRepo.GetUsersAsync();
         return Ok(users);
     }
 
-    [Authorize]
-    [HttpGet("{id}")]     // GET api/users/5
+    // GET api/users/5
+    [HttpGet("{id}")]     
     public async Task<ActionResult<IEnumerable<AppUser>>> GetUser(int id)
     {
-        var user = await context.Users.FindAsync(id);   //built-in method.
+        var user = await userRepo.GetUserByIdAsync(id);  
         if (user == null) return NotFound($"User With ID {id} not found");
         return Ok(user);
     }

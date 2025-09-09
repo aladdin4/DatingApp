@@ -31,6 +31,9 @@
             services.AddCors();
             //services injection
             services.AddScoped<ITokenService, TokenService>();
+
+            //Repos injection
+            services.AddScoped<IUserRepo, UserRepo>();
             return services;
         }
     }

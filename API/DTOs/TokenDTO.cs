@@ -1,9 +1,9 @@
 ﻿namespace API.DTOs;
 
 /// <summary>
-/// Defines the <see cref="UserDTO" />
+/// Defines the <see cref="TokenDTO" />
 /// </summary>
-public class UserDTO
+public class TokenDTO
 {
     /// <summary>
     /// Gets or sets the Username

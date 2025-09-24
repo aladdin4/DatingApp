@@ -8,7 +8,7 @@ namespace API.Models
         public required string Url { get; set; }
         public bool IsMain { get; set; }
         public string? PublicId { get; set; }
-        public int AppUserId { get; set; }
-        public AppUser AppUser { get; set; } = null!;
+        public int AppUserId { get; set; }        // Foreign key follows the convention: <NavigationPropertyName>Id
+        public AppUser AppUser { get; set; } = null!;    // Navigation back to AppUser
     }
 }

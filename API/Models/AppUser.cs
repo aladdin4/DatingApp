@@ -18,13 +18,8 @@ public class AppUser
     public string? LookingFor { get; set; }
     public required string City { get; set; }
     public required string Country { get; set; }
-    public List<Photo> Photos { get; set; } = new();
+    public List<Photo> Photos { get; set; } = new();      // ✅ EF maps via join table
     public DateTime LastActive { get; set; } = DateTime.UtcNow;
-
-    public int GetAge()
-    {
-        return DateOfBirth.CalculateAge();
-    }
 }
 
 

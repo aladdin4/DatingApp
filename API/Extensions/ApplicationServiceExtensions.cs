@@ -4,6 +4,7 @@
     using API.Interfaces;
     using API.Services;
     using Microsoft.EntityFrameworkCore;
+    using Microsoft.Extensions.DependencyInjection;
 
     /// <summary>
     /// Defines the <see cref="ApplicationServiceExtensions" />
@@ -11,7 +12,6 @@
     public static class ApplicationServiceExtensions
     {
         /// <see cref="IServiceCollection"/></returns>
-
         /// <summary>
         /// The AddAppService
         /// </summary>
@@ -34,6 +34,16 @@
 
             //Repos injection
             services.AddScoped<IUserRepo, UserRepo>();
+
+            //Mapper injection
+            services.AddAutoMapper(
+                cfg =>
+                {
+                    /* optional config, mandatory param */
+                },
+                AppDomain.CurrentDomain.GetAssemblies()
+            );
+
             return services;
         }
     }

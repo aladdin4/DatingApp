@@ -2,11 +2,11 @@
 {
     public static class DateTimeExtensions
     {
-        public static int CalculateAge(this DateOnly dob)
+        public static int CalculateAge(this DateOnly dateOfBirth)
         {
             var today = DateOnly.FromDateTime(DateTime.Today);
-            var age = today.Year - dob.Year;
-            if (dob > today.AddYears(-age)) age--;
+            var age = today.Year - dateOfBirth.Year;
+            if (dateOfBirth > today.AddYears(-age)) age--;
             return age;
         }
     }

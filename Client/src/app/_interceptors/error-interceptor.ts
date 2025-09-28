@@ -23,13 +23,10 @@ export const errorInterceptor: HttpInterceptorFn = (req, next) => {
             }
             throw modalStateErrors.flat();
           }
-          launchToasterAndNavigate(error);
+          launchToasterAndNavigate(error, '/not-found');
           break;
         case 401:
           launchToasterAndNavigate(error, '/auth' );
-          break;
-        case 404:
-          launchToasterAndNavigate(error, '/not-found');
           break;
         case 500:
           launchToasterAndNavigate(error, '/server-error');

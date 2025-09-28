@@ -1,8 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { AccountService } from '../_services/account.service';
-import { User } from '../_models/user';
-import { UserDTO } from '../_models/userDTO';
 import { MessageService } from 'primeng/api';
+import { LoginDTO } from '../_models/loginDTO';
 
 interface LoginOption {
   label: string;
@@ -29,7 +28,7 @@ export class NavbarComponent implements OnInit {
     this.setCurrentUser();
   }
   //login
-  model: UserDTO = new UserDTO();
+  model: LoginDTO = new LoginDTO();
   login() {
     this.accountService.login(this.model).subscribe({
       next: (result: any) => {
@@ -46,9 +45,9 @@ export class NavbarComponent implements OnInit {
   //user login actions
   currentLoginOption: LoginOption | undefined;
   setCurrentUser() {
-    this.accountService.getUser();
-    const user = this.accountService.currentUser();
-    if (user) {
+    this.accountService.getUserToken();
+    const userToken = this.accountService.currentUser();
+    if (userToken) {
       this.currentLoginOption = undefined;
     }
   }

@@ -1,8 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable, signal } from '@angular/core';
-import { User } from '../_models/user';
 import { map } from 'rxjs';
-import { UserDTO } from '../_models/userDTO';
+import { LoginDTO } from '../_models/loginDTO';
+import { Token } from '../_models/token';
+import { environment } from '../../environments/environment';
 
 
 @Injectable({
@@ -11,11 +12,11 @@ import { UserDTO } from '../_models/userDTO';
 export class AccountService {
   private http = inject(HttpClient);
 
-  private baseUrl = 'https://localhost:5001/api/';
+  private baseUrl = environment.apiUrl;
 
-  currentUser = signal<User | null>(null);
+  currentUser = signal<Token | null>(null);
 
-  login(model: UserDTO) {
+  login(model: LoginDTO) {
     return this.http.post(this.baseUrl + 'account/login', model).pipe(
       map((user: any) => {
         if (!user) return;
@@ -32,19 +33,16 @@ export class AccountService {
     this.currentUser.set(null);
   }
 
-  getUser() {
+  getUserToken() {
     if (!this.currentUser()) {
       const user = localStorage.getItem('user');
       this.currentUser.set(user ? JSON.parse(user) : null);
       return (!!this.currentUser());
     }
-    console.log('2', this.currentUser())
-    console.log('21', !this.currentUser())
     return (!!this.currentUser())
   }
 
-
-  register(model: UserDTO) {
+  register(model: LoginDTO) {
     return this.http.post(this.baseUrl + 'account/register', model).pipe(
       map((user: any) => {
         if (!user) return;

@@ -33,5 +33,5 @@ export class HomeComponent {
   learnMore() {
     console.log('cancelling');
   }
-  user = this.accountService.currentUser();
+  userToken = this.accountService.currentUser();
 }

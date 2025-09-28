@@ -3,11 +3,11 @@ import { MessageService } from 'primeng/api';
 
 //Navigation component handling user authentication
 @Component({
-  selector: 'member-list',
+  selector: 'user-list',
   standalone: false,
-  templateUrl: './member-list.component.html',
-  styleUrl: './member-list.component.css'
+  templateUrl: './user-list.component.html',
+  styleUrl: './user-list.component.css'
 })
-export class MemberListComponent{
+export class UserListComponent{
 
 }

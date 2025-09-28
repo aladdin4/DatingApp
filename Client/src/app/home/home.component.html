@@ -1,39 +1,39 @@
 
 <div style="display: flex; justify-content: center; align-items: center; flex-direction: column; ">
-	@if(!registering)   {
-	<div class="text-7xl mt-20">
-		Welcome    {{user?.username}}
-	</div>
-	<div class="text-5xl">
-		Find your match here ...
-	</div>
-	@if(!user)   {
-	<div class="text-7xl mt-70">
-		<p-button class="mr-5" label="Register" (click)="registering = true" />
-		<p-button label="Learn More" (click)="learnMore()" />
-	</div>
-	}
-	}
-	@else{
-	<div class="mt-20">
-		<p-inputgroup>
-			<p-inputgroup-addon>
-				<i class="pi pi-user"></i>
-			</p-inputgroup-addon>
-			<input pInputText [(ngModel)]="model.username" placeholder="Username" />
-		</p-inputgroup>
-	</div>
-	<div class="mt-10">
-		<p-inputgroup>
-			<p-inputgroup-addon>
-				<i class="pi pi-lock"></i>
-			</p-inputgroup-addon>
-			<input type="password" pInputText [(ngModel)]="model.password" placeholder="Password" />
-		</p-inputgroup>
-	</div>
-	<div class="text-7xl mt-30">
-		<p-button class="mr-5" label="Register" (click)="register()" />
-		<p-button class="" label="Back" (click)="registering = false" />
-	</div>
-	}
+  @if(!registering)   {
+  <div class="text-7xl mt-20">
+    Welcome    {{userToken?.username}}
+  </div>
+  <div class="text-5xl">
+    Find your match here ...
+  </div>
+  @if(!userToken)   {
+  <div class="text-7xl mt-70">
+    <p-button class="mr-5" label="Register" (click)="registering = true" />
+    <p-button label="Learn More" (click)="learnMore()" />
+  </div>
+  }
+  }
+  @else{
+  <div class="mt-20">
+    <p-inputgroup>
+      <p-inputgroup-addon>
+        <i class="pi pi-user"></i>
+      </p-inputgroup-addon>
+      <input pInputText [(ngModel)]="model.username" placeholder="Username" />
+    </p-inputgroup>
+  </div>
+  <div class="mt-10">
+    <p-inputgroup>
+      <p-inputgroup-addon>
+        <i class="pi pi-lock"></i>
+      </p-inputgroup-addon>
+      <input type="password" pInputText [(ngModel)]="model.password" placeholder="Password" />
+    </p-inputgroup>
+  </div>
+  <div class="text-7xl mt-30">
+    <p-button class="mr-5" label="Register" (click)="register()" />
+    <p-button class="" label="Back" (click)="registering = false" />
+  </div>
+  }
 </div>

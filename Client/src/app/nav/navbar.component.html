@@ -1,51 +1,51 @@
 <!-- Navigation header for Friendzy app -->
 <header class="relative bg-gray-100">
 	<div class="border-b border-gray-200 mx-auto px-4 sm:px-6 lg:px-8">
-		<div class="flex h-16 items-center">
-			<!-- Logo section -->
-			<div class="ml-4 mr-8 flex lg:ml-0">
-				<a routerLink="/">
-					<span class="text-2xl tracking-wider italic  font-medium text-red-400 hover:text-red-800">Friendzy</span>
-					<span class="ml-3 block text-sm font-medium text-gray-800 "></span>
-				</a>
-			</div>
-			<!-- Show navigation links if user is logged in -->
-			@if (accountService.currentUser()){
-			<div class="mr-auto flex items-center mt-2">
-				<div class="flex flex-1 items-center justify-end space-x-6">
-					<a routerLinkActive="active" routerLink="/members" class="text-sm font-medium text-blue-400 hover:text-blue-600">Matches</a>
-					<span aria-hidden="true" class="h-6 w-px bg-gray-200"></span>
-					<a routerLinkActive="active" routerLink="/lists" class="text-sm font-medium text-blue-400 hover:text-blue-600">Lists</a>
-					<span aria-hidden="true" class="h-6 w-px bg-gray-200"></span>
-					<a routerLinkActive="active" routerLink="/messages" class="text-sm font-medium text-blue-400 hover:text-blue-600">Messages</a>
-				</div>
-			</div>
-			<!-- Show logout button -->
-			<div class="card flex justify-center" style="width: 45%;display: flex; justify-content: flex-end;">
-				<p-select [options]="loginOptions" [(ngModel)]="currentLoginOption" placeholder="Welcome {{accountService.currentUser()?.username}}" (onChange)="loginChanged()" optionLabel="label" class="w-fit  border-none bg-transparent" [style]="{'border': 'none', 'background': 'transparent', 'box-shadow': 'none'}" />
-			</div>
-			}
-			<!-- Show login form if user is not logged in -->
-			@else{
+    <div class="flex h-16 items-center">
+      <!-- Logo section -->
+      <div class="ml-4 mr-8 flex lg:ml-0">
+        <a routerLink="/">
+          <span class="text-2xl tracking-wider italic  font-medium text-red-400 hover:text-red-800">Friendzy</span>
+          <span class="ml-3 block text-sm font-medium text-gray-800 "></span>
+        </a>
+      </div>
+      <!-- Show navigation links if user is logged in -->
+      @if (accountService.currentUser()){
+      <div class="mr-auto flex items-center mt-2">
+        <div class="flex flex-1 items-center justify-end space-x-6">
+          <a routerLinkActive="active" routerLink="/users" class="text-sm font-medium text-blue-400 hover:text-blue-600">Matches</a>
+          <span aria-hidden="true" class="h-6 w-px bg-gray-200"></span>
+          <a routerLinkActive="active" routerLink="/lists" class="text-sm font-medium text-blue-400 hover:text-blue-600">Lists</a>
+          <span aria-hidden="true" class="h-6 w-px bg-gray-200"></span>
+          <a routerLinkActive="active" routerLink="/messages" class="text-sm font-medium text-blue-400 hover:text-blue-600">Messages</a>
+        </div>
+      </div>
+      <!-- Show logout button -->
+      <div class="card flex justify-center" style="width: 45%;display: flex; justify-content: flex-end;">
+        <p-select [options]="loginOptions" [(ngModel)]="currentLoginOption" placeholder="Welcome {{accountService.currentUser()?.username}}" (onChange)="loginChanged()" optionLabel="label" class="w-fit  border-none bg-transparent" [style]="{'border': 'none', 'background': 'transparent', 'box-shadow': 'none'}" />
+      </div>
+      }
+      <!-- Show login form if user is not logged in -->
+      @else{
 
-			<form #loginForm="ngForm" class="ml-auto flex items-center" (ngSubmit)="login()">
-				<div class="mt-2">
-					<!-- Username input -->
-					<input pInputText [(ngModel)]="model.userName" placeholder="Username" name="userName" />
-				</div>
+      <form #loginForm="ngForm" class="ml-auto flex items-center" (ngSubmit)="login()">
+        <div class="mt-2">
+          <!-- Username input -->
+          <input pInputText [(ngModel)]="model.userName" placeholder="Username" name="userName" />
+        </div>
 
-				<div class="mt-2 ml-3">
-					<!-- Password input -->
-					<input type="password" pInputText [(ngModel)]="model.password" placeholder="Password" name="password" />
-				</div>
+        <div class="mt-2 ml-3">
+          <!-- Password input -->
+          <input type="password" pInputText [(ngModel)]="model.password" placeholder="Password" name="password" />
+        </div>
 
-				<div class="mt-2 ml-3">
-					<!-- Login button -->
-					<p-button type="submit" [style]="{'height': '2.7rem'}" severity="secondary" styleClass="block w-full rounded-md bg-white px-1 py-1.5 text-base text-gray-900 outline-gray-300 " label="Login" icon="pi pi-check" iconPos="right" />
-				</div>
-			</form>
-			}
-		</div>
+        <div class="mt-2 ml-3">
+          <!-- Login button -->
+          <p-button type="submit" [style]="{'height': '2.7rem'}" severity="secondary" styleClass="block w-full rounded-md bg-white px-1 py-1.5 text-base text-gray-900 outline-gray-300 " label="Login" icon="pi pi-check" iconPos="right" />
+        </div>
+      </form>                                          
+      }
+    </div>
 	</div>
 </header>
 

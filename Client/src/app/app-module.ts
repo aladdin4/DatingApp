@@ -9,20 +9,20 @@ import { appConfig } from '../app.config';
 import { PrimeNgImportsModule } from './prime-ng-imports.module';
 import { NavbarComponent } from './nav/navbar.component';
 import { HomeComponent } from './home/home.component';
-import { MemberDetailComponent } from './members/member-detail/member-detail.component';
-import { MemberListComponent } from './members/member-list/member-list.component';
 import { MessagesComponent } from './messages/messages.component';
 import { ListsComponent } from './lists/lists.component';
 import { MessageService } from 'primeng/api';
 import { errorInterceptor } from './_interceptors/error-interceptor';
+import { UserListComponent } from './users/user-list/user-list.component';
+import { UserDetailComponent } from './users/user-detail/user-detail.component';
 
 @NgModule({                                     
   declarations: [
     App,
     NavbarComponent,
     HomeComponent,
-    MemberListComponent,
-    MemberDetailComponent,
+    UserListComponent,
+    UserDetailComponent,
     MessagesComponent,
     ListsComponent
   ],

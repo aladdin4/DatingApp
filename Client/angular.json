@@ -24,6 +24,7 @@
           "builder": "@angular/build:application",
           "options": {
             "browser": "src/main.ts",
+            "clearScreen": true,
             "polyfills": [
               "zone.js"
             ],
@@ -69,7 +70,7 @@
           "defaultConfiguration": "production"
         },
         "serve": {
-          "builder": "@angular/build:dev-server",
+          "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
               "buildTarget": "Client:build:production"
@@ -83,6 +84,7 @@
             "port": 4200
           }
         },
+        
         "extract-i18n": {
           "builder": "@angular/build:extract-i18n"
         },

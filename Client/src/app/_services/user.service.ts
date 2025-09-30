@@ -18,11 +18,11 @@ export class UserService {
   }
 
   getUserById(id: number) {
-    return this.http.get<UserDTO[]>(this.baseUrl + 'users/' + id, this.getHttpOptions());
+    return this.http.get<UserDTO[]>(this.baseUrl + 'users/id/' + id, this.getHttpOptions());
   }
 
   getUserByUsername(username: string) {
-    return this.http.get<UserDTO[]>(this.baseUrl + 'users/' + username, this.getHttpOptions());
+    return this.http.get<UserDTO[]>(this.baseUrl + 'users/user/' + username, this.getHttpOptions());
   }
 
   getHttpOptions() {

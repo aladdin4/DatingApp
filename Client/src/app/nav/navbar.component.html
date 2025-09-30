@@ -13,11 +13,12 @@
       @if (accountService.currentUser()){
       <div class="mr-auto flex items-center mt-2">
         <div class="flex flex-1 items-center justify-end space-x-6">
-          <a routerLinkActive="active" routerLink="/users" class="text-sm font-medium text-blue-400 hover:text-blue-600">Matches</a>
+          
+          <a #linkMatches routerLinkActive="active" routerLink="/users" Class="font-medium text-sm" [ngClass]="linkMatches?.classList?.contains('active') ? 'text-red-400 hover:text-red-600' : 'text-blue-400 hover:text-blue-600'">Matches</a>
+          <span aria-hidden="true"  class="h-6 w-px bg-gray-200"></span>
+          <a #linkLists routerLinkActive="active" routerLink="/lists" Class="font-medium text-sm" [ngClass]="linkLists?.classList?.contains('active') ? 'text-red-400 hover:text-red-600' : 'text-blue-400 hover:text-blue-600'">Lists</a>
           <span aria-hidden="true" class="h-6 w-px bg-gray-200"></span>
-          <a routerLinkActive="active" routerLink="/lists" class="text-sm font-medium text-blue-400 hover:text-blue-600">Lists</a>
-          <span aria-hidden="true" class="h-6 w-px bg-gray-200"></span>
-          <a routerLinkActive="active" routerLink="/messages" class="text-sm font-medium text-blue-400 hover:text-blue-600">Messages</a>
+          <a #linkMessages routerLinkActive="active" routerLink="/messages"  Class="font-medium text-sm" [ngClass]="linkMessages?.classList?.contains('active') ? 'text-red-400 hover:text-red-600' : 'text-blue-400 hover:text-blue-600'">Messages</a>
         </div>
       </div>
       <!-- Show logout button -->

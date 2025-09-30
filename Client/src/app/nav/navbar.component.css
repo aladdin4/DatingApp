@@ -14,6 +14,26 @@
 .p-button:hover {
   background-color: #2563eb !important; /* blue-600 */
 }
-                              .active{
-                                  color:red
-                              }
+/*.nav-link {
+  @apply font-medium;
+  @apply text-sm;
+  @apply text-blue-400;
+  @apply hover:text-blue-600;
+}
+.active {
+  @apply text-red-400;
+  @apply hover:text-red-600;
+}*/
+/*@layer components {
+  .nav-link {
+    @apply  text-blue-400 hover:text-blue-600;
+  }
+
+  .active {
+    @apply text-red-400;
+  }
+
+    .active:hover {
+      @apply text-red-600;
+    }
+}*/

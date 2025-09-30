@@ -15,4 +15,6 @@ export interface UserDTO {
   country: string
   photos: PhotoDTO[]
   lastActive: string
+
+
 }

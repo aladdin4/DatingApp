@@ -29,26 +29,28 @@ public class UsersController(IUserRepo userRepo) : BaseApiController
         var user = await userRepo.GetUserDTOByIdAsync(id);  
         return Ok(user);
     }
-    // GET api/users/5
+    
+    // GET api/users/ahmed
     [HttpGet(template: "user/{username}")]
     public async Task<ActionResult<IEnumerable<AppUserDTO>>> GetUser(string username)
     {
         var user = await userRepo.GetUserDTOByUsernameAsync(username);
         return Ok(user);
     }
-    // POST api/<UsersController>
+    
+    // POST api/users
     [HttpPost]
     public void Post([FromBody] string value)
     {
     }
 
-    // PUT api/<UsersController>/5
+    // PUT api/users/5
     [HttpPut("{id}")]
     public void Put(int id, [FromBody] string value)
     {
     }
 
-    // DELETE api/<UsersController>/5
+    // DELETE api/users/5
     [HttpDelete("{id}")]
     public void Delete(int id)
     {

@@ -1,0 +1,39 @@
+/* nav-link base appearance is driven by Tailwind utility classes in the template */
+
+/* routerLinkActive will add the class "active" to the element.
+   When the element has .active, we override the text color and hover color. */
+
+.nav-link.active,
+.active .nav-link {
+  /* Tailwind red-400 hex */
+  color: #fb7185; /* text-red-400 */
+}
+
+
+
+
+  /* darken color on hover when active */
+  .nav-link.active:hover,
+  .active .nav-link:hover {
+    /* Tailwind red-600 hex */
+    color: #dc2626; /* text-red-600 */
+  }
+
+/* If you need to ensure specificity over Tailwind utilities, use !important */
+.nav-link.active,
+.active .nav-link {
+  color: #fb7185 !important;
+}
+
+  .nav-link.active:hover,
+  .active .nav-link:hover {
+    color: #dc2626 !important;
+  }
+
+/* optional: small helper for line clamp if you don't use the plugin */
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}

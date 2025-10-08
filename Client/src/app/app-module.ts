@@ -15,6 +15,7 @@ import { MessageService } from 'primeng/api';
 import { errorInterceptor } from './_interceptors/error-interceptor';
 import { UserListComponent } from './users/user-list/user-list.component';
 import { UserDetailComponent } from './users/user-detail/user-detail.component';
+import { UserCardComponent } from './users/user-list/user-card/user-card.component';
 
 @NgModule({                                     
   declarations: [
@@ -22,6 +23,7 @@ import { UserDetailComponent } from './users/user-detail/user-detail.component';
     NavbarComponent,
     HomeComponent,
     UserListComponent,
+    UserCardComponent,
     UserDetailComponent,
     MessagesComponent,
     ListsComponent

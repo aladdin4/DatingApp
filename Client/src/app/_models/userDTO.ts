@@ -3,6 +3,7 @@ import { PhotoDTO } from "./photoDTO"
 export interface UserDTO {
   id: number
   username: string
+  token: string
   age: number
   photoUrl: string
   knownAs: string
@@ -15,6 +16,4 @@ export interface UserDTO {
   country: string
   photos: PhotoDTO[]
   lastActive: string
-
-
 }

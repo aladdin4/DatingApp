@@ -2,8 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable, signal } from '@angular/core';
 import { map } from 'rxjs';
 import { LoginDTO } from '../_models/loginDTO';
-import { Token } from '../_models/token';
 import { environment } from '../../environments/environment';
+import { UserDTO } from '../_models/userDTO';
 
 
 @Injectable({
@@ -14,7 +14,7 @@ export class AccountService {
 
   private baseUrl = environment.apiUrl;
 
-  currentUser = signal<Token | null>(null);
+  currentUser = signal<UserDTO | null>(null);
 
   login(model: LoginDTO) {
     return this.http.post(this.baseUrl + 'account/login', model).pipe(
@@ -32,7 +32,7 @@ export class AccountService {
     localStorage.removeItem('user');
     this.currentUser.set(null);
   }
-
+  //?
   getUserToken() {
     if (!this.currentUser()) {
       const user = localStorage.getItem('user');

@@ -1,5 +1,5 @@
 import { Component, input } from '@angular/core';
-import { UserDTO } from '../../../_models/userDTO';
+import { UserDTO } from '../../../../_models/userDTO';
 
 //Navigation component handling user authentication
 @Component({

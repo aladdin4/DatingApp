@@ -1,5 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { AccountService } from '../_services/account.service';
+import { AccountService } from '../../_services/account.service';
 import { MessageService } from 'primeng/api';
 
 //Navigation component handling user authentication

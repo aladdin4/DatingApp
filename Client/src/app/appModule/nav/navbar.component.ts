@@ -1,7 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { AccountService } from '../_services/account.service';
+import { AccountService } from '../../_services/account.service';
 import { MessageService } from 'primeng/api';
-import { LoginDTO } from '../_models/loginDTO';
+import { LoginDTO } from '../../_models/loginDTO';
 
 interface LoginOption {
   label: string;

@@ -7,15 +7,16 @@ import { App } from './app';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { appConfig } from '../app.config';
 import { PrimeNgImportsModule } from './prime-ng-imports.module';
-import { NavbarComponent } from './nav/navbar.component';
-import { HomeComponent } from './home/home.component';
-import { MessagesComponent } from './messages/messages.component';
-import { ListsComponent } from './lists/lists.component';
+import { NavbarComponent } from './appModule/nav/navbar.component';
+import { HomeComponent } from './appModule/home/home.component';
+import { MessagesComponent } from './appModule/messages/messages.component';
+import { ListsComponent } from './appModule/lists/lists.component';
 import { MessageService } from 'primeng/api';
 import { errorInterceptor } from './_interceptors/error-interceptor';
-import { UserListComponent } from './users/user-list/user-list.component';
-import { UserDetailComponent } from './users/user-detail/user-detail.component';
-import { UserCardComponent } from './users/user-list/user-card/user-card.component';
+import { UserListComponent } from './appModule/users/user-list/user-list.component';
+import { UserDetailComponent } from './appModule/users/user-detail/user-detail.component';
+import { UserCardComponent } from './appModule/users/user-list/user-card/user-card.component';
+import { JwtInterceptor } from './_interceptors/jwt-interceptor';
 
 @NgModule({                                     
   declarations: [
@@ -37,10 +38,10 @@ import { UserCardComponent } from './users/user-list/user-card/user-card.compone
   ],
   providers: [
     provideBrowserGlobalErrorListeners(),
-    provideHttpClient(withInterceptors([errorInterceptor])),
+    provideHttpClient(withInterceptors([errorInterceptor, JwtInterceptor])),
     MessageService,
     ...(appConfig.providers || [])
   ],
   bootstrap: [App]
 })
-export class AppModule { }
+export class appModule { }

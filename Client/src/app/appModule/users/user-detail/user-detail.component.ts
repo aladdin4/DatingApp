@@ -1,4 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 //Navigation component handling user authentication
 @Component({
@@ -7,6 +8,11 @@ import { Component, inject, OnInit } from '@angular/core';
   templateUrl: './user-detail.component.html',
   styleUrl: './user-detail.component.css'
 })
-export class UserDetailComponent{
-  
+export class UserDetailComponent implements OnInit {
+
+  private route = inject(ActivatedRoute)
+
+  ngOnInit(): void {
+    console.log('route is', this.route);
+  }
 }

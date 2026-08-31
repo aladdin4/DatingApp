@@ -1,6 +1,6 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { UserService } from '../../_services/user.service';
-import { UserDTO } from '../../_models/userDTO';
+import { UserService } from '../../../_services/user.service';
+import { UserDTO } from '../../../_models/userDTO';
 
 //Navigation component handling user authentication
 @Component({

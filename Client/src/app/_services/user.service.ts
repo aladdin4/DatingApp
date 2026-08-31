@@ -14,23 +14,15 @@ export class UserService {
   private baseUrl = environment.apiUrl;
   userToken = this.accountService.currentUser();
   getUsers() {
-    return this.http.get<UserDTO[]>(this.baseUrl + 'users', this.getHttpOptions());
+    return this.http.get<UserDTO[]>(this.baseUrl + 'users');
   }
 
   getUserById(id: number) {
-    return this.http.get<UserDTO[]>(this.baseUrl + 'users/id/' + id, this.getHttpOptions());
+    return this.http.get<UserDTO[]>(this.baseUrl + 'users/id/' + id);
   }
 
   getUserByUsername(username: string) {
-    return this.http.get<UserDTO[]>(this.baseUrl + 'users/user/' + username, this.getHttpOptions());
-  }
-
-  getHttpOptions() {
-    return {
-      headers: {
-        Authorization: 'Bearer ' + this.accountService.currentUser()?.token
-      }
-    }
+    return this.http.get<UserDTO[]>(this.baseUrl + 'users/user/' + username);
   }
 }
 

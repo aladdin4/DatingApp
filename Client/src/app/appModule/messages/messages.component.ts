@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component,  } from '@angular/core';
 
 //Navigation component handling user authentication
 @Component({
